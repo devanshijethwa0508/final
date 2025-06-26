@@ -102,9 +102,10 @@
     }
 
     async function loadModels() {
-      await faceapi.nets.ssdMobilenetv1.loadFromUri("https://cdn.jsdelivr.net/npm/face-api.js/models");
-      await faceapi.nets.faceRecognitionNet.loadFromUri("https://cdn.jsdelivr.net/npm/face-api.js/models");
-      await faceapi.nets.faceLandmark68Net.loadFromUri("https://cdn.jsdelivr.net/npm/face-api.js/models");
+      const modelUrl = 'https://justadudewhohacks.github.io/face-api.js/models';
+      await faceapi.nets.ssdMobilenetv1.loadFromUri(modelUrl);
+      await faceapi.nets.faceRecognitionNet.loadFromUri(modelUrl);
+      await faceapi.nets.faceLandmark68Net.loadFromUri(modelUrl);
     }
 
     async function setupCamera() {
@@ -138,7 +139,6 @@
       if (match.distance < 0.6) {
         status.textContent = "🔓 Door Unlocked!";
         status.style.color = "green";
-        // Optional: fetch("http://192.168.1.x/unlock")
       } else {
         status.textContent = "❌ Face not matched.";
         status.style.color = "red";
